@@ -8,13 +8,17 @@ public class InteractRunner {
             Calculator calc = new Calculator();
             String exit = "no";
             while (!exit.equals("yes")) {
+                System.out.println("Enter action (+-*/): ");
+                String action = reader.next();
                 System.out.println("Enter first argument");
                 String first = reader.next();
                 System.out.println("Enter second argument");
                 String second = reader.next();
-                calc.add(Integer.valueOf(first), Integer.valueOf(second));
+                calc.action(action, Integer.valueOf(first), Integer.valueOf(second));
                 System.out.println("Result = " + calc.getResult());
-                calc.cleanResult();
+                System.out.println("Clean result: clean/not:" );
+                String cleanResult = reader.next();
+                calc.cleanResult(cleanResult);
                 System.out.println("Exit? Yes|No");
                 exit = reader.next();
             }
