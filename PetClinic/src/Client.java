@@ -1,6 +1,6 @@
 public class Client {
-    private final String NameClient;
-    private final Pet pet;
+    private String NameClient;
+    private Pet pet;
 
     public Client(String nameClient, Pet pet) {
         NameClient = nameClient;
@@ -13,5 +13,13 @@ public class Client {
 
     public Pet getPet() {
         return pet;
+    }
+
+    public void setNameClient(String nameClient) {
+        NameClient = nameClient;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
     }
 }

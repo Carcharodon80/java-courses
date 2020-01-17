@@ -8,7 +8,6 @@ public class View {
 
     public View(Clinic clinic) {
         this.clinic = clinic;
-        this.require();
     }
 
     /**
@@ -30,11 +29,22 @@ public class View {
 
         if (command.equals("1")) {
             this.showClients();
-            require();
         } else if (command.equals("2")) {
             clinic.addClient(this.requireNewClient());
-            require();
-        } else if (command.equals("7")) {
+        }
+        else if (command.equals("3")){
+            clinic.findClient(this.requireExistClient());
+        }
+        else if (command.equals("4")){
+            clinic.findPet(this.requireExistPet());
+        }
+        else if (command.equals("5")){
+            clinic.editClient(this.requireNumberOfExistClient());
+        }
+        else if (command.equals("6")){
+            clinic.deleteClient(this.requireNumberOfExistClient());
+        }
+        else if (command.equals("7")) {
             clinic.exit();
         }
     }
@@ -99,6 +109,34 @@ public class View {
         return namePet;
     }
 
+    /**
+     * метод запрашивает с консоли имя клиента
+     * @return String имя клиента
+     */
+    private String requireExistClient() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите имя клиента: ");
+        String nameClient = scanner.next();
+        return nameClient;
+    }
+
+    /**
+     * метод запрашивает с консоли имя питомца
+     * @return String имя питомца
+     */
+    private String requireExistPet() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите имя питомца: ");
+        String namePet = scanner.next();
+        return namePet;
+    }
+
+    private int requireNumberOfExistClient() {
+        System.out.println("Введите номер клиента в базе: ");
+        Scanner scanner = new Scanner(System.in);
+        int numberClient = scanner.nextInt();
+        return numberClient;
+    }
 
     /**
      * метод выводит клиентов и их питомцев на консоль, сообщает, если клиника пуста
@@ -117,8 +155,11 @@ public class View {
                 }
             }
         }
-
     }
+
+
+
+
 
 
 }

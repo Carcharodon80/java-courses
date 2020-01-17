@@ -1,5 +1,5 @@
 public class Dog implements Pet {
-    private final String name;
+    private String name;
 
     public Dog(String name) {
         this.name = name;
@@ -14,5 +14,10 @@ public class Dog implements Pet {
     @Override
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 }

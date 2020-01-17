@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Clinic {
     private final Client[] clients;
 
@@ -21,12 +23,6 @@ public class Clinic {
                 }
             }
         }
-    }
-
-
-
-    void exit(){
-        System.exit(0);
     }
 
     /**
@@ -58,7 +54,92 @@ public class Clinic {
         return clinicIsFull;
     }
 
+    /**
+     * метод находит клиента по его имени и выводит на экран
+     * @param nameClient
+     */
+    public void findClient(String nameClient) {
+        boolean hasClientInClinic = false;
+        for (Client client : clients){
+            if (client != null && client.getNameClient().equals(nameClient)){
+                System.out.println("Указанный клиент есть в базе:");
+                System.out.println("Имя клиента : " + client.getNameClient() + ", " +
+                        client.getPet().getClass().getName() + " : " + client.getPet().getName());
+                System.out.println();
+                hasClientInClinic = true;
+            }
+        }
+        if (!hasClientInClinic){
+            System.out.println("Указанного клиента нет в клинике.");
+            System.out.println();
+        }
+    }
+
+    /**
+     * метод находит питомца по его имени и выводит на экран
+     * @param namePet
+     */
+    public void findPet(String namePet) {
+        boolean hasPetInClinic = false;
+        for (Client client : clients){
+            if (client != null && client.getPet().getName().equals(namePet)){
+                System.out.println("Указанный питомец есть в базе: ");
+                System.out.println("Имя клиента : " + client.getNameClient() + ", " +
+                        client.getPet().getClass().getName() + " : " + client.getPet().getName());
+                System.out.println();
+                hasPetInClinic = true;
+            }
+        }
+        if (!hasPetInClinic){
+            System.out.println("Указанного питомца нет в клинике.");
+            System.out.println();
+        }
+    }
+
+    /**
+     * метод вводит новое имя клиента и питомца
+     * @param numberClient
+     */
+    public void editClient(int numberClient) {
+        if (clients[numberClient] != null){
+            Client client = clients[numberClient];
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Введите новое имя клиента: ");
+            client.setNameClient(scanner.next());
+            System.out.println("Введите новое имя питомца: ");
+            client.getPet().setName(scanner.next());
+        }
+        else {
+            System.out.println("Введен неверный номер клиента.");
+            System.out.println();
+        }
+    }
+
+    /**
+     * метод получает номер клиента и удаляет его из базы
+     * @param numberClient
+     */
+    public void deleteClient(int numberClient) {
+        System.out.println("Клиент " + clients[numberClient].getNameClient() + " удален из базы.");
+        System.out.println();
+        clients[numberClient] = null;
+    }
+
+    /**
+     * заканчивает работу с программой
+     */
+    void exit(){
+        System.exit(0);
+    }
+
+    /**
+     * геттер базы клиентов
+     * @return
+     */
     public Client[] getClients() {
         return clients;
     }
+
+
+
 }

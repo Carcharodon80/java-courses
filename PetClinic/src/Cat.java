@@ -1,5 +1,5 @@
 public class Cat implements Pet {
-    private final String name;
+    private String name;
 
     public Cat(String name) {
         this.name = name;
@@ -13,5 +13,10 @@ public class Cat implements Pet {
     @Override
     public String getName() {
         return this.name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
     }
 }
