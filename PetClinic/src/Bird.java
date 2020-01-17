@@ -1,7 +1,7 @@
 public class Bird implements Pet{
     private String name;
 
-    public Bird(String name) {
+    Bird(String name) {
         this.name = name;
     }
 

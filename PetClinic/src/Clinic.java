@@ -1,15 +1,14 @@
 import java.util.Scanner;
 
-public class Clinic {
+class Clinic {
     private final Client[] clients;
 
-    public Clinic(Client[] clients) {
+    Clinic(Client[] clients) {
         this.clients = clients;
     }
 
     /**
      * добавляет клиента в массив клиники, если есть свободные места
-     *
      * @param client новый клиент клиники
      */
     void addClient(Client client) {
@@ -27,7 +26,6 @@ public class Clinic {
 
     /**
      * проверяет, пуста ли клиника
-     *
      * @return true, если клиника пуста
      */
     boolean clinicIsEmpty() {
@@ -44,7 +42,7 @@ public class Clinic {
      * проверяет, переполнена ли клиника
      * @return true, если нет свободных мест
      */
-    boolean clinicIsFull() {
+    private boolean clinicIsFull() {
         boolean clinicIsFull = true;
         for (Client client : clients) {
             if (client == null) {
@@ -56,9 +54,9 @@ public class Clinic {
 
     /**
      * метод находит клиента по его имени и выводит на экран
-     * @param nameClient
+     * @param nameClient имя клиента
      */
-    public void findClient(String nameClient) {
+    void findClient(String nameClient) {
         boolean hasClientInClinic = false;
         for (Client client : clients){
             if (client != null && client.getNameClient().equals(nameClient)){
@@ -77,9 +75,9 @@ public class Clinic {
 
     /**
      * метод находит питомца по его имени и выводит на экран
-     * @param namePet
+     * @param namePet имя питомца
      */
-    public void findPet(String namePet) {
+    void findPet(String namePet) {
         boolean hasPetInClinic = false;
         for (Client client : clients){
             if (client != null && client.getPet().getName().equals(namePet)){
@@ -98,9 +96,9 @@ public class Clinic {
 
     /**
      * метод вводит новое имя клиента и питомца
-     * @param numberClient
+     * @param numberClient номер клиента в базе
      */
-    public void editClient(int numberClient) {
+    void editClient(int numberClient) {
         if (clients[numberClient] != null){
             Client client = clients[numberClient];
             Scanner scanner = new Scanner(System.in);
@@ -117,9 +115,9 @@ public class Clinic {
 
     /**
      * метод получает номер клиента и удаляет его из базы
-     * @param numberClient
+     * @param numberClient номер клиента в базе
      */
-    public void deleteClient(int numberClient) {
+    void deleteClient(int numberClient) {
         System.out.println("Клиент " + clients[numberClient].getNameClient() + " удален из базы.");
         System.out.println();
         clients[numberClient] = null;
@@ -134,12 +132,9 @@ public class Clinic {
 
     /**
      * геттер базы клиентов
-     * @return
+     * @return массив клиентов
      */
-    public Client[] getClients() {
+    Client[] getClients() {
         return clients;
     }
-
-
-
 }

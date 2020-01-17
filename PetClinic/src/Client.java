@@ -2,20 +2,20 @@ public class Client {
     private String NameClient;
     private Pet pet;
 
-    public Client(String nameClient, Pet pet) {
+    Client(String nameClient, Pet pet) {
         NameClient = nameClient;
         this.pet = pet;
     }
 
-    public String getNameClient() {
+    String getNameClient() {
         return NameClient;
     }
 
-    public Pet getPet() {
+    Pet getPet() {
         return pet;
     }
 
-    public void setNameClient(String nameClient) {
+    void setNameClient(String nameClient) {
         NameClient = nameClient;
     }
 

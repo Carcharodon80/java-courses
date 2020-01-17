@@ -6,7 +6,7 @@ public class ClinicRunner {
         clinic.addClient(client);
 
         View view = new View(clinic);
-        while (true){
+        while (true) {
             view.require();
         }
     }

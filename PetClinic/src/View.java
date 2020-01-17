@@ -3,10 +3,10 @@ import java.util.Scanner;
 /**
  * Класс ввода комманд и вывод информации на консоль
  */
-public class View {
+class View {
     private final Clinic clinic;
 
-    public View(Clinic clinic) {
+    View(Clinic clinic) {
         this.clinic = clinic;
     }
 
@@ -27,25 +27,27 @@ public class View {
         Scanner scanner = new Scanner(System.in);
         String command = scanner.next();
 
-        if (command.equals("1")) {
-            this.showClients();
-        } else if (command.equals("2")) {
-            clinic.addClient(this.requireNewClient());
-        }
-        else if (command.equals("3")){
-            clinic.findClient(this.requireExistClient());
-        }
-        else if (command.equals("4")){
-            clinic.findPet(this.requireExistPet());
-        }
-        else if (command.equals("5")){
-            clinic.editClient(this.requireNumberOfExistClient());
-        }
-        else if (command.equals("6")){
-            clinic.deleteClient(this.requireNumberOfExistClient());
-        }
-        else if (command.equals("7")) {
-            clinic.exit();
+        switch (command) {
+            case "1":
+                this.showClients();
+                break;
+            case "2":
+                clinic.addClient(this.requireNewClient());
+                break;
+            case "3":
+                clinic.findClient(this.requireExistClient());
+                break;
+            case "4":
+                clinic.findPet(this.requireExistPet());
+                break;
+            case "5":
+                clinic.editClient(this.requireNumberOfExistClient());
+                break;
+            case "6":
+                clinic.deleteClient(this.requireNumberOfExistClient());
+                break;
+            case "7":
+                clinic.exit();
         }
     }
 
@@ -58,8 +60,7 @@ public class View {
         System.out.println("Введите имя клиента: ");
         String nameClient = scanner.next();
         Pet pet = this.requireNewPet();
-        Client client = new Client(nameClient, pet);
-        return client;
+        return new Client(nameClient, pet);
     }
 
     /**
@@ -105,8 +106,7 @@ public class View {
     private String requireNamePet() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите имя питомца: ");
-        String namePet = scanner.next();
-        return namePet;
+        return scanner.next();
     }
 
     /**
@@ -116,8 +116,7 @@ public class View {
     private String requireExistClient() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите имя клиента: ");
-        String nameClient = scanner.next();
-        return nameClient;
+        return scanner.next();
     }
 
     /**
@@ -127,21 +126,19 @@ public class View {
     private String requireExistPet() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите имя питомца: ");
-        String namePet = scanner.next();
-        return namePet;
+        return scanner.next();
     }
 
     private int requireNumberOfExistClient() {
         System.out.println("Введите номер клиента в базе: ");
         Scanner scanner = new Scanner(System.in);
-        int numberClient = scanner.nextInt();
-        return numberClient;
+        return scanner.nextInt();
     }
 
     /**
      * метод выводит клиентов и их питомцев на консоль, сообщает, если клиника пуста
      */
-    void showClients() {
+    private void showClients() {
         if (clinic.clinicIsEmpty()) {
             System.out.println("Клиника пуста.");
         } else {
