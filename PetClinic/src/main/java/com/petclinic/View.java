@@ -51,7 +51,8 @@ class View {
             clinic.exit();
         }
         else{
-            throw new NumberFormatException("Введите число от 1 до 7");
+            System.out.println("Введите число от 1 до 7");
+            System.out.println();
         }
     }
 
@@ -83,6 +84,7 @@ class View {
             pet = new Bird(namePet);
         }
         return pet;
+
     }
 
     /**
@@ -90,16 +92,30 @@ class View {
      * @return typePet - 1, 2 или 3
      */
     private int requireTypePet() {
-        int typePet;
+        int typePet = 0;
         Scanner scanner = new Scanner(System.in);
         do {
+
             System.out.println("Введите вид питомца: ");
             System.out.println("1 : собака.");
             System.out.println("2 : кошка.");
             System.out.println("3 : птица.");
-            typePet = Integer.valueOf(scanner.next());
-        }
-        while (typePet != 1 && typePet != 2 && typePet != 3);
+            String typePetString = scanner.next();
+
+        if (typePetString.equals("1")) {
+            typePet = 1;
+
+        } else if (typePetString.equals("2")) {
+            typePet = 2;
+
+        } else if (typePetString.equals("3")) {
+            typePet = 3;
+        } else {
+            System.out.println("Введите число от 1 до 3.");
+            System.out.println();
+        }}
+        while (typePet == 0);
+
         return typePet;
     }
 
@@ -150,7 +166,7 @@ class View {
             for (int i = 0; i < clinic.getClients().length; i++) {
                 if (clinic.getClients()[i] != null) {
                     System.out.println(i + " : Client = " + clinic.getClients()[i].getNameClient() + ", " +
-                            clinic.getClients()[i].getPet().getClass().getName() + " = " +
+                            clinic.getClients()[i].getPet().getClass().getSimpleName() + " = " +
                             clinic.getClients()[i].getPet().getName());
                     System.out.println("----------------------------");
                 }
