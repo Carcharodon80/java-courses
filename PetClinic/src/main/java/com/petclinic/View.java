@@ -163,11 +163,11 @@ class View {
             System.out.println("Клиника пуста.");
         } else {
 
-            for (int i = 0; i < clinic.getClients().length; i++) {
-                if (clinic.getClients()[i] != null) {
-                    System.out.println(i + " : Client = " + clinic.getClients()[i].getNameClient() + ", " +
-                            clinic.getClients()[i].getPet().getClass().getSimpleName() + " = " +
-                            clinic.getClients()[i].getPet().getName());
+            for (int i = 0; i < clinic.getClients().size(); i++) {
+                if (clinic.getClients().get(i) != null) {
+                    System.out.println(i + " : Client = " + clinic.getClients().get(i).getNameClient() + ", " +
+                            clinic.getClients().get(i).getPet().getClass().getSimpleName() + " = " +
+                            clinic.getClients().get(i).getPet().getName());
                     System.out.println("----------------------------");
                 }
             }
